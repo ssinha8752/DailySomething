@@ -1,48 +1,52 @@
-Given an integer x, return true if x is a 
-palindrome
-, and false otherwise.
+5. Longest Palindromic Substring
+Medium
+Topics
+Companies
+Hint
+Given a string s, return the longest 
+palindromic
+ 
+substring
+ in s.
 
  
 
 Example 1:
 
-Input: x = 121
-Output: true
-Explanation: 121 reads as 121 from left to right and from right to left.
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
 Example 2:
 
-Input: x = -121
-Output: false
-Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
-Example 3:
+Input: s = "cbbd"
+Output: "bb"
+ 
 
-Input: x = 10
-Output: false
-Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+Constraints:
+
+1 <= s.length <= 1000
+s consist of only digits and English letters.
 
 
 
-ANSWER : 
 
-/**
- * @param {number} x
- * @return {boolean}
- */
-var isPalindrome = function(x) {
-    if(x>=0){
-        let num1=String(x);
-        let num2=num1.split('');
-        let num3=num2.reverse();
-        let num4=Number(num3.join(''));
-        if(x===num4)
-        {
-            return true
-        }
-        else
-            return false;
-    }
-    else
+var longestPalindrome = function(s) {
+    var length=0;
+    var result="";
+    for(let i=0;i<s.length;i++)
     {
-        return false;
+        for (let j=i;j<s.length;j++)
+        {
+            let len=j-i+1;
+           let subs=s.substring(i,i+len);
+            let subs_pal=subs.split('').reverse().join('');
+            if(len>length && subs_pal===subs)
+            {
+                result=subs_pal;
+                length=len;
+            }
+        
+        }
     }
+    return result;
 };
