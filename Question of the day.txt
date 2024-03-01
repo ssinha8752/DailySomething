@@ -49,4 +49,46 @@ var longestPalindrome = function(s) {
         }
     }
     return result;
+
+ANSWER 2 : 
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var isPalindrome = function(s,i,j){
+    if(i>=j)
+    {
+        return true;
+    }
+
+    if(s[i]===s[j]){
+        return isPalindrome(s,i+1,j-1);
+    }
+
+    return false;
+}
+
+var longestPalindrome = function(s) {
+    let maxLength=0;
+    let start=0;
+    for(let i=0;i<s.length;i++)
+    {
+        for (let j=i;j<s.length;j++)
+        {
+            let len=j-i+1;
+            let subs=s.substring(i,i+len);
+            if(isPalindrome(s,i,j)===true)
+            {   
+                if(len>maxLength&&start>=0)
+                {
+                    maxLength=len;
+                    start=i;
+                }
+            }
+        }   
+    }
+    return s.substring(start,maxLength+start);
+};
+
 };
