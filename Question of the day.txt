@@ -28,7 +28,7 @@ Constraints:
 s consist of only digits and English letters.
 
 
-
+ANSWER 1 : PASS = 48/142
 
 var longestPalindrome = function(s) {
     var length=0;
@@ -50,7 +50,7 @@ var longestPalindrome = function(s) {
     }
     return result;
 
-ANSWER 2 : 
+ANSWER 2 : 95/142
 
 /**
  * @param {string} s
