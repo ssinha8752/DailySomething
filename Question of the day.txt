@@ -90,3 +90,25 @@ var intToRoman = function(num) {
  }   
  return ans;   
 };
+
+
+ANSWER 2 = 
+
+var intToRoman = function(num) {
+    let numcode=[1,4,5,9,10,40,50,90,100,400,500,900,1000]
+    let romancode=["I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"]
+    let i=12;
+    let answer="";
+    while(num>=0)
+    {   
+        let div=Math.floor(num/numcode[i]);
+        num=num%numcode[i];
+        while(div)
+        {
+            answer=answer.concat(romancode[i]);
+            div--;
+        }
+        i--;
+    }
+    return answer;
+};
