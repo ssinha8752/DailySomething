@@ -103,3 +103,36 @@ var isValid = function(s) {
     }
      return stack.length === 0; 
 };
+
+
+ANSWER 3 = 
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    const stack = [];
+    const brackets = {
+        '(': ')',
+        '{': '}',
+        '[': ']'
+    };
+    for(let i=0;i<s.length;i++)
+    {
+        if((s[i]==="(")||(s[i]==="[")||(s[i]==="{"))
+        {
+            stack.push(s[i]);
+            console.log(stack);
+        }
+        else
+        {
+            let last=stack.pop();
+            if(s[i]!==brackets[last])
+            {
+                return false;
+            }
+        }
+    }
+     return stack.length === 0; 
+};
