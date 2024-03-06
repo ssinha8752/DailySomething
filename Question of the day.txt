@@ -1,87 +1,74 @@
-
-Code
-Testcase
-Testcase
-Test Result
-14. Longest Common Prefix
+20. Valid Parentheses
 Easy
 Topics
 Companies
-Write a function to find the longest common prefix string amongst an array of strings.
+Hint
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
-If there is no common prefix, return an empty string "".
+An input string is valid if:
 
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
  
 
 Example 1:
 
-Input: strs = ["flower","flow","flight"]
-Output: "fl"
+Input: s = "()"
+Output: true
 Example 2:
 
-Input: strs = ["dog","racecar","car"]
-Output: ""
-Explanation: There is no common prefix among the input strings.
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
 
 
-
-ANSWER 1 = 65/125
+ANSWER = 
 
 /**
- * @param {string[]} strs
- * @return {string}
+ * @param {string} s
+ * @return {boolean}
  */
-var longestCommonPrefix = function(strs) {
-    let str="";
-    let minLength = strs[0].length; 
-    let ansStr="";
-    if(minLength===1)
+var isValid = function(s) {
+    let counta=0;
+    let countb=0;
+    let countc=0;
+    for(let i=0;i<s.length;i++)
     {
-        return strs[0];
+        if(s[i]==="(")
+        {
+            counta++;
+        }
+        else if(s[i]===")")
+        {
+            counta--;
+        }
+        else if(s[i]==="[")
+        {
+            countb++;
+        }
+        else if(s[i]==="]")
+        {
+            countb--;
+        }
+        else if(s[i]==="{")
+        {
+            countc++;
+        }
+        else if(s[i]==="}")
+        {
+            countc--;
+        }
+    }
+    if(counta===0&&countb===0&&countc===0)
+    {
+        return true;
     }
     else
     {
-        for (let i = 1; i < strs.length; i++) 
-    {
-        const currentLength = strs[i].length;
-        if (currentLength < minLength) {
-            minLength = currentLength;
-            str=strs[i];
-        }
+        return false
     }
-    for (i = 0; i < str.length; i++) {
-        let count=0;
-        for(j=0;j<strs.length;j++)
-        {   
-            if(strs[j].includes(str[i]) && count>=0)
-            {
-                count++;
-            }
-            if(count===strs.length)
-            {
-                ansStr +=str[i];
-            }
-        }
-    }
-    return ansStr;
-    }
-};
-
-ANSWER 2 = 
-
-/**
- * @param {string[]} strs
- * @return {string}
- */
-var longestCommonPrefix = function(strs) {
-    let pre=strs[0];
-    for(let i=1;i<strs.length;i++)
-    {   let j = 0;
-        while (j < pre.length && j < strs[i].length && pre[j] === strs[i][j]) {
-            j++;
-        }
-         pre = pre.substring(0, j);
-         if(pre==="") break;
-    }
-    return pre;
 };
