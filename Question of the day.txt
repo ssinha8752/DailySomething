@@ -1,138 +1,32 @@
-20. Valid Parentheses
-Easy
-Topics
-Companies
-Hint
-Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
-An input string is valid if:
+Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
-Every close bracket has a corresponding open bracket of the same type.
  
 
 Example 1:
 
-Input: s = "()"
-Output: true
+Input: x = 123
+Output: 321
 Example 2:
 
-Input: s = "()[]{}"
-Output: true
+Input: x = -123
+Output: -321
 Example 3:
 
-Input: s = "(]"
-Output: false
+Input: x = 120
+Output: 21
 
 
 ANSWER = 
 
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function(s) {
-    let counta=0;
-    let countb=0;
-    let countc=0;
-    for(let i=0;i<s.length;i++)
+var reverse = function(x) {
+    let num=Math.abs(x).toString().split("").reverse();
+    let rev=Math.sign(x) * Number(num.join(""))
+    if(rev >= -Math.pow(2, 31) && rev <= (Math.pow(2, 31) - 1))
     {
-        if(s[i]==="(")
-        {
-            counta++;
-        }
-        else if(s[i]===")")
-        {
-            counta--;
-        }
-        else if(s[i]==="[")
-        {
-            countb++;
-        }
-        else if(s[i]==="]")
-        {
-            countb--;
-        }
-        else if(s[i]==="{")
-        {
-            countc++;
-        }
-        else if(s[i]==="}")
-        {
-            countc--;
-        }
-    }
-    if(counta===0&&countb===0&&countc===0)
-    {
-        return true;
+        return rev;
     }
     else
-    {
-        return false
-    }
-};
-
-
-ANS 2= /**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function(s) {
-    const stack = [];
-    const brackets = {
-        '(': ')',
-        '{': '}',
-        '[': ']'
-    };
-    for(let i=0;i<s.length;i++)
-    {
-        if((s[i]==="(")||(s[i]==="[")||(s[i]==="{"))
-        {
-            stack.push(s[i]);
-            console.log(stack);
-        }
-        else
-        {
-            let last=stack.pop();
-            if(s[i]!==brackets[last])
-            {
-                return false;
-            }
-        }
-    }
-     return stack.length === 0; 
-};
-
-
-ANSWER 3 = 
-
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function(s) {
-    const stack = [];
-    const brackets = {
-        '(': ')',
-        '{': '}',
-        '[': ']'
-    };
-    for(let i=0;i<s.length;i++)
-    {
-        if((s[i]==="(")||(s[i]==="[")||(s[i]==="{"))
-        {
-            stack.push(s[i]);
-            console.log(stack);
-        }
-        else
-        {
-            let last=stack.pop();
-            if(s[i]!==brackets[last])
-            {
-                return false;
-            }
-        }
-    }
-     return stack.length === 0; 
+    return 0;
 };
