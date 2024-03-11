@@ -1,93 +1,9 @@
-18. 4Sum
-Solved
-Medium
+21. Merge Two Sorted Lists
+Easy
 Topics
 Companies
-Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+You are given the heads of two sorted linked lists list1 and list2.
 
-0 <= a, b, c, d < n
-a, b, c, and d are distinct.
-nums[a] + nums[b] + nums[c] + nums[d] == target
-You may return the answer in any order.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 
-
-
-ANS = 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[][]}
- */
-var fourSum = function(nums, target) {
-    nums.sort((a,b)=>a-b);
-    const ans=[];
-    if(nums.length>=4)
-    {
-        for(let i=0;i<nums.length-3;i++)
-        {
-            if(nums[i]>target) break;
-            if(i>0 && nums[i]===nums[i-1]) continue;
-            for(let j=i+1;j<nums.length-2;j++)
-            {
-                if(j>i+1 && nums[j]===nums[j-1]) continue;
-                let l=j+1;
-                let r=nums.length-1;
-                while(l<r)
-                {
-                    let sum=nums[i]+nums[j]+nums[l]+nums[r];
-                    if(sum===target)
-                    {
-                        ans.push([nums[i],nums[j],nums[l],nums[r]]);
-                        while(l<r && nums[l]===nums[l+1]) l++;
-                        while(l<r && nums[r]===nums[r-1]) r--;      
-                        l++;
-                        r--;                  
-                    }
-                    else if(sum<target) l++;
-                    else r--;
-                }
-            }
-        }
-    }
-    return ans;
-
-};
-
-
-ANSWER 2 = 
-
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[][]}
- */
-var fourSum = function(nums, target) {
-    nums.sort((a,b)=>a-b);
-    const ans=[];
-        for(let i=0;i<nums.length-3;i++)
-        {
-            if(i>0 && nums[i]===nums[i-1]) continue;
-            for(let j=i+1;j<nums.length-2;j++)
-            {
-                if(j>i+1 && nums[j]===nums[j-1]) continue;
-                let l=j+1;
-                let r=nums.length-1;
-                while(l<r)
-                {
-                    let sum=nums[i]+nums[j]+nums[l]+nums[r];
-                    if(sum===target)
-                    {
-                        ans.push([nums[i],nums[j],nums[l],nums[r]]);
-                        while(l<r && nums[l]===nums[l+1]) l++;
-                        while(l<r && nums[r]===nums[r-1]) r--;      
-                        l++;
-                        r--;                  
-                    }
-                    else if(sum<target) l++;
-                    else r--;
-                }
-            }
-    }
-    return ans;
-
-};
+Return the head of the merged linked list.
