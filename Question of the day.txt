@@ -43,4 +43,19 @@ var findMedianSortedArrays = function(nums1, nums2) {
   }
     else
     return result[Math.floor(len/2)];
+
+
+ANS 2=
+
+function findMedianSortedArrays(nums1, nums2) {
+    const merged = nums1.concat(nums2).sort((a, b) => a - b);
+    const length = merged.length;
+    const middle = Math.floor(length / 2);
+    if (length % 2 === 0) {
+        return (merged[middle - 1] + merged[middle]) / 2;
+    } else {
+        return merged[middle];
+    }
+}
+
 };
