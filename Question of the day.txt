@@ -24,3 +24,10 @@ assert k == expectedNums.length;
 sort(nums, 0, k); // Sort the first k elements of nums
 for (int i = 0; i < actualLength; i++) {
     assert nums[i] == expectedNums[i];
+
+ANS = var removeElement = function(nums, val) {
+    let ans=[];
+   ans=nums.filter(item=>item!==val); 
+   return ans.length;
+};
+
