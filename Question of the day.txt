@@ -18,3 +18,20 @@ Example 2:
 Input: haystack = "leetcode", needle = "leeto"
 Output: -1
 Explanation: "leeto" did not occur in "leetcode", so we return -1.
+
+
+ANS = 
+
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+    let ans=-1;
+    if(haystack.includes(needle))
+    {
+        ans=haystack.indexOf(needle);
+    }
+    return ans;
+};
