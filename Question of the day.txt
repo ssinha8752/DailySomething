@@ -25,4 +25,23 @@ Input: s = " "
 Output: true
 Explanation: s is an empty string "" after removing non-alphanumeric characters.
 Since an empty string reads the same forward and backward, it is a palindrome.
+
+
+
+ANS = 
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function(s) {
+    s = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if(s.length<=1)
+        return true;
+    if(s[0]!==s[s.length-1])
+    {
+        return false;
+    }
+    return isPalindrome(s.slice(1,-1));
+};
  
