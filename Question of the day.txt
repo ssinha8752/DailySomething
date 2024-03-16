@@ -1,47 +1,20 @@
-125. Valid Palindrome
-Solved
-Easy
-Topics
-Companies
-A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
-Given a string s, return true if it is a palindrome, or false otherwise.
+Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
 
- 
+Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+Return k.
+Custom Judge:
 
-Example 1:
+The judge will test your solution with the following code:
 
-Input: s = "A man, a plan, a canal: Panama"
-Output: true
-Explanation: "amanaplanacanalpanama" is a palindrome.
-Example 2:
+int[] nums = [...]; // Input array
+int[] expectedNums = [...]; // The expected answer with correct length
 
-Input: s = "race a car"
-Output: false
-Explanation: "raceacar" is not a palindrome.
-Example 3:
+int k = removeDuplicates(nums); // Calls your implementation
 
-Input: s = " "
-Output: true
-Explanation: s is an empty string "" after removing non-alphanumeric characters.
-Since an empty string reads the same forward and backward, it is a palindrome.
-
-
-
-ANS = 
-
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isPalindrome = function(s) {
-    s = s.toLowerCase().replace(/[^a-z0-9]/g, "");
-    if(s.length<=1)
-        return true;
-    if(s[0]!==s[s.length-1])
-    {
-        return false;
-    }
-    return isPalindrome(s.slice(1,-1));
-};
- 
+assert k == expectedNums.length;
+for (int i = 0; i < k; i++) {
+    assert nums[i] == expectedNums[i];
+}
+If all assertions pass,
