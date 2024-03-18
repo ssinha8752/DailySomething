@@ -20,3 +20,23 @@ Example 3:
 
 Input: nums = [1]
 Output: 1
+
+
+
+ANS =>
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    count={}
+    for(let i in nums){
+       count[nums[i]]=count[nums[i]]?count[nums[i]]+1:1;
+    }
+    function getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+    }
+    let ans=getKeyByValue(count,1)
+    return ans;
+};
